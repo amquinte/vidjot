@@ -1,0 +1,12 @@
+{
+  "name": "vidjot",
+  "version": "1.0.0",
+  "description": "App to jot down video ideas.",
+  "main": "app.js",
+  "repository": "https://github.com/amquinte/vidjot.git",
+  "author": "Anthony Quintero-Quiroga <anthony.quiroga@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
