@@ -14,6 +14,10 @@ mongoose.connect('mongodb://amquinte:test@ds153015.mlab.com:53015/vidjot', {
 .then(() => console.log('MongoDB connected...'))
 .catch(err => console.log(err));
 
+// Load idea model
+require('./models/Idea');
+const Idea = mongoose.model('ideas');
+
 const port = 5500;
 
 // Handlebars middleware
@@ -32,6 +36,11 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about');
 })
+
+//Add idea form
+app.get('/ideas/add', (req, res) => {
+    res.render('ideas/add');
+});
 
 //Using arror function notation =>
 app.listen(port, () => {
