@@ -3,7 +3,7 @@ const exphbs = require('express-handlebars'); //For templates
 const mongoose = require('mongoose'); //For MongoDB
 const bodyParser = require('body-parser'); //To parse form data
 const methodOverride = require('method-override'); //To override form methods
-const flash = require('connect-flash');
+const flash = require('connect-flash'); //For flash messages
 const session = require('express-session');
 
 //const is a ES6 feature
