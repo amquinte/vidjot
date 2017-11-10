@@ -13,7 +13,7 @@ const IdeaSchema = new Schema({
     },
     date:{
         type: String,
-        required: true
+        default: Date.now
     }
 });
 
