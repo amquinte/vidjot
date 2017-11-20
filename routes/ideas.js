@@ -7,7 +7,7 @@ require('../models/Idea');
 const Idea = mongoose.model('ideas');
 
 // Process form
-router.post('/ideas', (req, res) => {
+router.post('/', (req, res) => {
     let errors = [];
 
     if(!req.body.title){
