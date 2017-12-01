@@ -6,6 +6,7 @@ const bodyParser = require('body-parser'); //To parse form data
 const methodOverride = require('method-override'); //To override form methods
 const flash = require('connect-flash'); //For flash messages
 const session = require('express-session');
+const passport = require('passport');
 
 //const is a ES6 feature
 const app = express();
@@ -13,6 +14,9 @@ const app = express();
 //Load routes
 const ideas = require('./routes/ideas');
 const users = require('./routes/users');
+
+//Passport config
+require('./config/passport')(passport);
 
 //Map global promise
 mongoose.Promise = global.Promise;
@@ -45,6 +49,10 @@ app.use(session({
     saveUninitialized: true,
 }));
 
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Flash middleware
 app.use(flash());
 
@@ -53,6 +61,7 @@ app.use(function(req, res, next){
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error = req.flash('error');
+    res.locals.user = req.user || null;
     next();
 });
 
