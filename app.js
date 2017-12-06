@@ -18,10 +18,13 @@ const users = require('./routes/users');
 //Passport config
 require('./config/passport')(passport);
 
+//DB config
+const db = require('./config/database');
+
 //Map global promise
 mongoose.Promise = global.Promise;
 //Connect to mongoose
-mongoose.connect('mongodb://amquinte:test@ds153015.mlab.com:53015/vidjot', {
+mongoose.connect(db.mongoURI, {
     useMongoClient: true
 })
 .then(() => console.log('MongoDB connected...'))
@@ -79,7 +82,8 @@ app.get('/about', (req, res) => {
     res.render('about');
 });
 
-const port = 5500;
+//process.env.PORT is necessary for Heroku
+const port = process.env.PORT || 5500;
 
 //Use routes
 app.use('/ideas', ideas);
